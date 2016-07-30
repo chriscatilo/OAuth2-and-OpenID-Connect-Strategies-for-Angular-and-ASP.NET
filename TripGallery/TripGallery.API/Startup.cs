@@ -1,21 +1,18 @@
 ﻿using AutoMapper;
+using IdentityServer3.AccessTokenValidation;
 using Owin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TripGallery.API.Helpers;
-using System.Web.Http.Cors;
 
 namespace TripGallery.API
 {
+
     public class Startup
     { 
 
         public void Configuration(IAppBuilder app)
         {
-          
+            ValidateAccessTokens(app);
+
             var config = WebApiConfig.Register();
             
             app.UseWebApi(config);
@@ -59,6 +56,19 @@ namespace TripGallery.API
 
 
             Mapper.AssertConfigurationIsValid();
+        }
+
+        // Validate the access token that's passed to on every api request
+        // and check that it has the valid scope Gallery Management
+        private static void ValidateAccessTokens(IAppBuilder app)
+        {
+            var options = new IdentityServerBearerTokenAuthenticationOptions()
+            {
+                Authority = Constants.TripGallerySTS, // the authority matches the issuer declared in the identity server
+                RequiredScopes = new[] {"gallerymanagement"}  
+            };
+
+            app.UseIdentityServerBearerTokenAuthentication(options);
         }
     }
 }

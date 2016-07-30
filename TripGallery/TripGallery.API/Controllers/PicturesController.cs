@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using TripGallery.API.Helpers;
 using TripGallery.API.UnitOfWork.Picture;
 
 namespace TripGallery.API.Controllers
 {
-  
+
+    // Controller only allows requests baring token
+    [Authorize]
     [EnableCors("https://localhost:44316", "*", "GET, POST, DELETE")]
     public class PicturesController : ApiController
     {

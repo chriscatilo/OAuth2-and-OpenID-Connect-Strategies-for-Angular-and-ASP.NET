@@ -10,7 +10,8 @@ using TripGallery.API.UnitOfWork.Trip;
 
 namespace TripGallery.API.Controllers
 {
-
+    // Controller only allows requests baring tokens
+    [Authorize]
     [EnableCors("https://localhost:44316", "*", "GET, POST, PATCH")]
     public class TripsController : ApiController
     {
