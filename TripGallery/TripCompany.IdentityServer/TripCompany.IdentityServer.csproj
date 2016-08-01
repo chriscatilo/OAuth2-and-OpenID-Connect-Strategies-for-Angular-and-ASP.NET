@@ -135,6 +135,9 @@
     <Compile Include="Config\Clients.CreateTripGalleryClientRegistrationByClientCredentials.cs">
       <DependentUpon>Clients.cs</DependentUpon>
     </Compile>
+    <Compile Include="Config\Clients.CreateTripGalleryClientRegistrationByImplicitFlow.cs">
+      <DependentUpon>Clients.cs</DependentUpon>
+    </Compile>
     <Compile Include="Config\Clients.cs" />
     <Compile Include="Config\Scopes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

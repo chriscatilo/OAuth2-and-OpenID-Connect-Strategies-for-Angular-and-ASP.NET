@@ -15,7 +15,8 @@ namespace TripCompany.IdentityServer.Config
         {
             return new[]
             {
-                CreateTripGalleryClientRegistrationByClientCredentials()
+                CreateTripGalleryClientRegistrationByClientCredentials(),
+                CreateTripGalleryClientRegistrationByImplicitFlow()
             };
         }
     }
